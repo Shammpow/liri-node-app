@@ -18,7 +18,6 @@ if (input === "spotify-this-song") {
     if (err) {
       return console.log('Error occurred: ' + err);
     }
-    // for (i = 0; i < 3; i++) {
     console.log("Artist: " + data.tracks.items[0].album.artists[0].name);
     console.log("Track Name: " + data.tracks.items[0].name);
     console.log("Link: " + data.tracks.items[0].album.external_urls.spotify);
@@ -26,9 +25,13 @@ if (input === "spotify-this-song") {
 
 
 
-    // console.log(data.tracks.items[i].artists[i].name);
-    // }
   });
+  fs.appendFile("log.txt", input + " " + song + "\n", function(err, data) {
+    if(err) {
+      console.log(err)
+    }
+    console.log("Content Added!")
+  })
 }
 
 
@@ -45,6 +48,13 @@ if (input === "my-tweets") {
       }
     }
   });
+  fs.appendFile("log.txt", input + "\n", function(err, data) {
+    if(err) {
+      console.log(err)
+    }
+    console.log("Content Added!")
+  })
+
 }
 
 if (input === "movie-this") {
@@ -60,6 +70,13 @@ if (input === "movie-this") {
     console.log("Actors: " + JSON.parse(response).Actors);
 
   })
+  fs.appendFile("log.txt", input + " " + movie + "\n", function(err, data) {
+    if(err) {
+      console.log(err)
+    }
+    console.log("Content Added!")
+  })
+
 }
 
 if (input === "do-what-it-says") {
@@ -71,4 +88,11 @@ if (input === "do-what-it-says") {
     }
     console.log(data)
   })
+  fs.appendFile("log.txt", input + "\n", function(err, data) {
+    if(err) {
+      console.log(err)
+    }
+    console.log("Content Added!")
+  })
+
 }
